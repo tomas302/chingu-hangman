@@ -1,0 +1,17 @@
+.circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+.main-body {
+  width: 10px;
+  height: 100px;
+  border-radius: 20%;
+  border: 2px solid red;
+}
+
+.body-wrap {
+
+}
