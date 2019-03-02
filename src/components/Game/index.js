@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import NavBar from '../NavBar/';
 import MainWord from '../MainWord/';
 import HangMan from '../HangMan/';
-import WrongLetters from '../WrongLetters/';
+// import WrongLetters from '../WrongLetters/';
 import { Container, Row, Col } from 'reactstrap';
 import "./Game.css";
 

@@ -2,11 +2,20 @@ import React, { Component } from 'react';
 import Game from './components/Game/'
 import './App.css';
 
+// Redux
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import rootReducer from './reducers/';
+
+let store = createStore(rootReducer);
+
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Game />
+        <Provider store={store}>
+          <Game />
+        </Provider>
       </div>
     );
   }

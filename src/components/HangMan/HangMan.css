@@ -1,6 +1,6 @@
 .hangman, .platform {
   position: relative;
-  margin-top: 100px;
+  margin-top: 25px;
 }
 
 .hangman div, .platform div {
