@@ -1,16 +1,40 @@
 import React from 'react';
 import './HangMan.css';
 
-const HangMan = () => {
+const bodyParts = [
+  <div className="head" />,
+  <div className='body' />,
+  <div className='left-arm' />,
+  <div className='right-arm' />,
+  <div className='left-leg' />,
+  <div className='right-leg' />
+];
+
+const deadEyes = [
+  <div className="left-eye">X</div>,
+  <div className="right-eye">X</div>,
+];
+
+const HangMan = (props) => {
+  let bodyPartsToDisplay = [];
+  for (let i = 0; i < props.failures; i++) {
+    bodyPartsToDisplay.push(bodyParts[i]);
+  }
+
+  if (props.failures === 6) {
+    bodyPartsToDisplay.push(deadEyes);
+  }
+
   return (
-    <div>
-<<<<<<< HEAD
-      <div className="circle">
+    <div style={{ height : "300px" }}>
+      <div className="hangman">
+        {bodyPartsToDisplay}
       </div>
-      <div className='body-wrap'><div className="main-body"></div></div>
-=======
-      Hang man
->>>>>>> 1d23beccc171bf2aa730977efc07ace2682ed365
+      <div className="platform">
+        <div className="base" />
+        <div className='rope' />
+        <div className='stick' />
+      </div>
     </div>
   );
 };

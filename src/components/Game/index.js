@@ -11,17 +11,23 @@ class Game extends Component {
     render() {
         
         return <Container>
-            <Row>
+            <Row className="navbar-row">
                 <Col xs="12">
                     <NavBar />
                 </Col>
             </Row>
             <Row>
-                <MainWord />
-                <HangMan />
+                <Col xs="12" md="4">
+                    <MainWord />
+                </Col>
+                <Col xs="12" md="6" >
+                    <HangMan failures={6} />
+                </Col>
             </Row>
             <Row>
-                <WrongLetters />
+                <Col xs="12">
+                    {/*<WrongLetters />*/}
+                </Col>
             </Row>
         </Container>;
     }
