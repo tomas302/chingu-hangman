@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Input, InputGroup, Label, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import './InputWordPopup.css';
 
 class InputWordPopup extends Component {
@@ -7,16 +7,18 @@ class InputWordPopup extends Component {
         super(props);
 
         this.state = {
-            value: ''
+            value: '',
+            owner: ''
         };
 
         this.handleKeyPress = this.handleKeyPress.bind(this);
+        this.onOwnerChange = this.onOwnerChange.bind(this);
         this.setWord = this.setWord.bind(this);
     }
 
     handleKeyPress(e) {
         if (e.key === "Enter") {
-            this.props.setWord(this.state.value);
+            this.setWord();
         } else {
             let newValue = e.target.value;
             let regex = /((?![A-z]).)*/g;
@@ -26,8 +28,23 @@ class InputWordPopup extends Component {
         }
     }
 
+    onOwnerChange(e) {
+        if (e.key === "Enter") {
+            this.setWord();
+        } else {
+            let newValue = e.target.value;
+            let regex = /((?![A-z0-9]).)*/g;
+            this.setState({
+                owner: newValue.replace(regex, "")
+            });
+        }
+    }
+
     setWord() {
         this.props.setWord(this.state.value);
+        if (this.state.owner !== '') {
+            this.props.setOwner(this.state.owner);
+        }
     }
 
     render() {
@@ -36,11 +53,16 @@ class InputWordPopup extends Component {
                 <Modal isOpen={ true } toggle={ null }>
                     <ModalHeader toggle={ null }>Enter your word</ModalHeader>
                     <ModalBody>
-                        Enter the word that the other player has to guess. It has to be a single word, without spaces, numbers or symbols.
-                        <Input pattern="/[A-z]/g" id="word" ref={ this._input } onKeyPress={this.handleKeyPress} onChange={this.handleKeyPress} value={this.state.value} />
+                        <InputGroup>
+                            <Label for="word">Enter the word that the other player has to guess. It has to be a single word, without spaces, numbers or symbols.</Label>
+                            <Input placeholder="Secret Word" name="word" onKeyPress={this.handleKeyPress} onChange={this.handleKeyPress} value={this.state.value} />
+                        </InputGroup>
+                        <br />
+                        <Label for="owner">(Optional) Enter your name:</Label>
+                        <Input placeholder="(Optional) Your name" name="owner" onKeyPress={this.onOwnerChange} onChange={this.onOwnerChange} value={this.state.owner} />
                     </ModalBody>
                     <ModalFooter>
-                        <Button onClick={ this.setWord } color="primary">Save</Button>
+                        <Button size="lg" onClick={ this.setWord } color="primary">Save</Button>
                     </ModalFooter>
                 </Modal>
             </div>

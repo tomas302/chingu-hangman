@@ -3,7 +3,9 @@ import Game from '../components/Game/';
 
 function mapStateToProps(state){
     return {
-        playing: state.game.playing
+        playing: state.game.playing,
+        owner: state.game.owner,
+        failures: state.failures
     }
 }
 

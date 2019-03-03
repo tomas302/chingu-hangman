@@ -19,7 +19,7 @@ class NavBar extends Component {
           <Collapse isOpen={false} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">(Owner)</NavLink>
+                <NavLink href="/components/">{this.props.owner}</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

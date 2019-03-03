@@ -10,6 +10,13 @@ export const endGame = (isWinner) => ({
     isWinner: isWinner
 });
 
+export const setOwner = (owner) => {
+    return {
+        type: 'SET_OWNER',
+        owner: owner
+    }
+};
+
 // word actions
 export const setWord = (word) => {
     return {
