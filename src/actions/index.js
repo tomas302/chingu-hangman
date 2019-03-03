@@ -3,10 +3,17 @@ export const startGame = () => ({
     type: 'START_GAME'
 });
 
-// game life cycle
 export const endGame = (isWinner) => ({
     type: 'END_GAME',
     isWinner: isWinner
+});
+
+export const resetGame = () => ({
+    type: 'RESET_GAME'
+});
+
+export const resetApp = () => ({
+    type: 'RESET_APP'
 });
 
 export const setOwner = (owner) => ({

@@ -32,7 +32,6 @@ const getGameData = async (id) => {
   let data = await firebase.database().ref('/games/' + id).once('value').then(function(snapshot) {
     return snapshot.val();
   });
-  console.log(data);
   return data;
 };
 

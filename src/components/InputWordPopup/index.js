@@ -23,9 +23,11 @@ class InputWordPopup extends Component {
         } else {
             let newValue = e.target.value;
             let regex = /((?![A-z]).)*/g;
-            this.setState({
-                value: newValue.replace(regex, "")
-            });
+            if (newValue.length <= 20) {
+                this.setState({
+                    value: newValue.replace(regex, "")
+                });
+            }
         }
     }
 
@@ -35,13 +37,16 @@ class InputWordPopup extends Component {
         } else {
             let newValue = e.target.value;
             let regex = /((?![A-z0-9]).)*/g;
-            this.setState({
-                owner: newValue.replace(regex, "")
-            });
+            if (newValue.length <= 35) {
+                this.setState({
+                    owner: newValue.replace(regex, "")
+                });
+            }
         }
     }
 
     setWord() {
+        if (this.state.value === '' && !this.props.shareLink) return;
         this.props.setWord(this.state.value);
         if (this.state.owner !== '') {
             this.props.setOwner(this.state.owner);
@@ -49,6 +54,7 @@ class InputWordPopup extends Component {
     }
 
     share() {
+        if (this.state.value === '') return;
         this.props.share(this.state.value, this.state.owner);
     }
 
@@ -88,7 +94,7 @@ class InputWordPopup extends Component {
         return (
             <div>
                 <Modal isOpen={true} toggle={null}>
-                    <ModalHeader toggle={null}>Enter your word</ModalHeader>
+                    <ModalHeader toggle={null}>{ (this.props.shareLink) ? "Share" : "Enter your word" }</ModalHeader>
                     {body}
                 </Modal>
             </div>
