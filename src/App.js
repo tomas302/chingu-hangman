@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Game from './components/Game/'
+import Game from './containers/game'
 import './App.css';
 
 // Redux

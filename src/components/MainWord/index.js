@@ -4,7 +4,7 @@ class MainWord extends Component {
   render() {
     return (
       <div>
-        MainWord
+        {this.props.word}
       </div>
     )
   }

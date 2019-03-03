@@ -10,6 +10,21 @@ export const endGame = (isWinner) => ({
     isWinner: isWinner
 });
 
+// word actions
+export const setWord = (word) => {
+    return {
+        type: 'SET_WORD',
+        word: word
+    }
+};
+
+export const letterGuessed = (letter) => {
+    return {
+        type: 'LETTER_GUESSED',
+        letter: letter
+    }
+};
+
 // failure counter
 export const wrongLetter = (letter) => ({
     type: 'WRONG_LETTER',
