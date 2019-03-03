@@ -18,7 +18,7 @@ class App extends Component {
         </Provider>
         <footer>
           <h3>
-            Coded by <a target="_blank" rel="noopener noreferrer" href="https://github.com/tomas302">tomas302</a> and <a target="_blank" rel="noopener noreferrer" href="https://github.com/chocko120/">chocko120</a>
+            Coded by <a target="_blank" rel="noopener noreferrer" href="https://github.com/tomas302">tomas302</a>
           </h3>
         </footer>
       </div>

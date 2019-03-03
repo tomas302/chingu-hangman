@@ -23,7 +23,7 @@ class InputWordPopup extends Component {
         } else {
             let newValue = e.target.value;
             let regex = /((?![A-z]).)*/g;
-            if (newValue.length <= 20) {
+            if (newValue.length <= 15) {
                 this.setState({
                     value: newValue.replace(regex, "")
                 });

@@ -26,7 +26,7 @@ const HangMan = (props) => {
   }
 
   return (
-    <div style={{ height : "300px" }}>
+    <div style={{ height : "300px" }} className="full-hangman">
       <div className="hangman">
         {bodyPartsToDisplay}
       </div>
