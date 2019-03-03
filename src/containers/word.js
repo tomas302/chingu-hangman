@@ -4,6 +4,7 @@ import MainWord from '../components/MainWord/';
 function mapStateToProps(store){
     return {
         word: store.word,
+        alphabet: store.alphabet
     }
 }
 

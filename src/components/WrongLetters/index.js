@@ -27,7 +27,7 @@ class WrongLetters extends Component {
     return (
       <div className="wrong-letters">
         <h3>Choose one</h3>
-        <InputGroup>
+        <InputGroup style={{ display: 'flex', justifyContent: 'center' }}>
           {buttons}
         </InputGroup>
       </div>
