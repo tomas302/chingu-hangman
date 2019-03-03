@@ -1,7 +1,6 @@
 // game life cycle
-export const startGame = (secretWord) => ({
-    type: 'START_GAME',
-    secretWord: secretWord
+export const startGame = () => ({
+    type: 'START_GAME'
 });
 
 // game life cycle

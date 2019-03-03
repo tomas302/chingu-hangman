@@ -13,16 +13,27 @@ let config = {
 firebase.initializeApp(config);
 let database = firebase.database();
 
-function writeNewGame(owner) {
+const writeNewGame = (id, word, owner) => {
     // A game entry.
     var gameData = {
+      id: id,
+      word: word,
       owner: owner
     };
-  
-    // Get a key for a new Game.
-    var newGameKey = database.ref().child('games').push().key;
+
     var updates = {};
-    updates['/games/' + newGameKey] = gameData;
+    updates['/games/' + id] = gameData;
   
     return database.ref().update(updates);
-}
+};
+
+const getGameData = async (id) => {
+
+  let data = await firebase.database().ref('/games/' + id).once('value').then(function(snapshot) {
+    return snapshot.val();
+  });
+  console.log(data);
+  return data;
+};
+
+export { writeNewGame, getGameData };

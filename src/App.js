@@ -16,6 +16,11 @@ class App extends Component {
         <Provider store={store}>
           <Game />
         </Provider>
+        <footer>
+          <h3>
+            Coded by <a target="_blank" rel="noopener noreferrer" href="https://github.com/tomas302">tomas302</a> and <a target="_blank" rel="noopener noreferrer" href="https://github.com/chocko120/">chocko120</a>
+          </h3>
+        </footer>
       </div>
     );
   }

@@ -10,6 +10,6 @@ a:not([href]):not([tabindex]):hover {
     color: white;
 }
 
-.navbar-light .navbar-nav .nav-link {
+.nav-item {
     color: white;
 }

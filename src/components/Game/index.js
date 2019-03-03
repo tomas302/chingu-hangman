@@ -7,18 +7,50 @@ import WrongLetters from '../WrongLetters/';
 import { Container, Row, Col } from 'reactstrap';
 
 // Redux actions
-import { setWord, setOwner, correctLetter, wrongLetter } from '../../actions/';
+import { startGame, setWord, setOwner, correctLetter, wrongLetter } from '../../actions/';
+
+// Firebase API
+import { writeNewGame, getGameData } from '../../API';
 
 import "./Game.css";
 
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const MAIN_URL = "https://tomas302.github.io/chingu-hangman/?game=";
+
+
+const getUrlVars = () => {
+    var vars = {};
+    window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
 
 class Game extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            shareLink: ''
+        };
+
+        if (getUrlVars()['game']) {
+            this.state.shareLink = MAIN_URL+getUrlVars()['game'];
+        }
+
         this.setWord = this.setWord.bind(this);
         this.setOwner = this.setOwner.bind(this);
         this.letterClicked = this.letterClicked.bind(this);
+        this.share = this.share.bind(this);
+    }
+
+    componentDidMount() {
+        if (this.state.shareLink !== '') {
+            this.props.dispatch(startGame());
+            getGameData(getUrlVars()['game']).then(data => {
+                this.setWord(data.word);
+                this.setOwner(data.owner);
+            });
+        }
     }
 
     setWord(word) {
@@ -38,8 +70,21 @@ class Game extends Component {
         }
     }
 
+    // here we call the firebase API to create a new link for our game settings
+    share(word, owner) {
+        let id = '';
+        for (let i = 0; i < 6; i++) {
+            id = id + alphabet[Math.floor(Math.random() * alphabet.length)]
+        }
+        writeNewGame(id, word, owner).then(() => {
+            this.setState({
+                shareLink: MAIN_URL+id
+            });
+        });
+    }
+
     render() {
-        let popup = (!this.props.playing) ? <InputWordPopup setWord={this.setWord} setOwner={this.setOwner} /> : "";
+        let popup = (!this.props.playing) ? <InputWordPopup shareLink={this.state.shareLink} share={this.share} setWord={this.setWord} setOwner={this.setOwner} /> : "";
         return <Container>
             { popup }
             <Row className="navbar-row">
