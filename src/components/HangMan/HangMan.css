@@ -1,0 +1,108 @@
+.hangman, .platform {
+  position: relative;
+  margin-top: 25px;
+}
+
+.hangman div, .platform div {
+  position: absolute;
+}
+
+.head {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid black;
+  top: 86px;
+  right: 143px;
+}
+
+.body {
+  width: 5px;
+  height: 75px;
+  border: 3px solid black;
+  top: 135px;
+  right: 165px;
+}
+
+.left-arm {
+  width: 5px;
+  height: 37.5px;
+  border: 3px solid black;
+  top: 140px;
+  right: 178px;
+  transform: rotate(45deg);
+}
+
+.right-arm {
+  width: 5px;
+  height: 37.5px;
+  border: 3px solid black;
+  top: 140px;
+  right: 152px;
+  transform: rotate(-45deg);
+}
+
+.left-leg {
+  width: 5px;
+  height: 37.5px;
+  border: 3px solid black;
+  top: 205px;
+  right: 173px;
+  transform: rotate(25deg);
+}
+
+.right-leg {
+  width: 5px;
+  height: 37.5px;
+  border: 3px solid black;
+  top: 205px;
+  right: 157px;
+  transform: rotate(-25deg);
+}
+
+.left-eye {
+  width: 5px;
+  height: 37.5px;
+  top: 95px;
+  right: 176px;
+  font-weight: bold;
+}
+
+.right-eye {
+  width: 5px;
+  height: 37.5px;
+  top: 95px;
+  right: 160px;
+  font-weight: bold;
+}
+
+.base {
+  width: 200px;
+  height: 50px;
+  border: 5px solid black;
+  top: 265px;
+  right: 0px;
+}
+
+.rope {
+  width: 100px;
+  height: 75px;
+  border: 5px solid black;
+  border-bottom: transparent;
+  top: 15px;
+  right: 70px;
+}
+
+.stick {
+  width: 10px;
+  height: 250px;
+  border: 5px solid black;
+  top: 15px;
+  right: 65px;
+}
+
+@media only screen and (max-width:767px) {
+  .full-hangman {
+    width: 70%;
+  }
+}
