@@ -7,23 +7,35 @@ import WrongLetters from '../WrongLetters/';
 import { Container, Row, Col } from 'reactstrap';
 
 // Redux actions
-import { setWord, setOwner } from '../../actions/';
+import { setWord, setOwner, correctLetter, wrongLetter } from '../../actions/';
 
 import "./Game.css";
+
+const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 class Game extends Component {
     constructor(props) {
         super(props);
         this.setWord = this.setWord.bind(this);
         this.setOwner = this.setOwner.bind(this);
+        this.letterClicked = this.letterClicked.bind(this);
     }
 
     setWord(word) {
-        this.props.dispatch(setWord(word));
+        this.props.dispatch(setWord(word.toUpperCase()));
     }
 
     setOwner(owner) {
         this.props.dispatch(setOwner(owner));
+    }
+
+    letterClicked(index) {
+        if (this.props.failures === 6) return;
+        if (this.props.word.includes(alphabet[index])) {
+            this.props.dispatch(correctLetter(index));
+        } else {
+            this.props.dispatch(wrongLetter(index));
+        }
     }
 
     render() {
@@ -45,7 +57,7 @@ class Game extends Component {
             </Row>
             <Row>
                 <Col xs="12">
-                    <WrongLetters />
+                    <WrongLetters alphabet={this.props.alphabet} handleClick={this.letterClicked} />
                 </Col>
             </Row>
         </Container>;

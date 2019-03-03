@@ -5,6 +5,8 @@ function mapStateToProps(state){
     return {
         playing: state.game.playing,
         owner: state.game.owner,
+        alphabet: state.alphabet,
+        word: state.word,
         failures: state.failures
     }
 }
