@@ -30,7 +30,7 @@ class Game extends Component {
     }
 
     letterClicked(index) {
-        if (this.props.failures === 6) return;
+        if (this.props.failures === 6 || this.props.corrects === this.props.word.length) return;
         if (this.props.word.includes(alphabet[index])) {
             this.props.dispatch(correctLetter(index));
         } else {

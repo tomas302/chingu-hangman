@@ -7,6 +7,7 @@ function mapStateToProps(state){
         owner: state.game.owner,
         alphabet: state.alphabet,
         word: state.word,
+        corrects: state.corrects,
         failures: state.failures
     }
 }
